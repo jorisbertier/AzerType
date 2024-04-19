@@ -1,19 +1,28 @@
-let listeMots = ["Cachalot", "Pétunia", "Serviette"]
 
+
+
+
+// let motUtilisateur = prompt("Entrez un mot correct pour scoré:" + listeMots[0])
+// if( motUtilisateur === listeMots[0]) {
+//     score++
+// }
+
+// motUtilisateur = prompt("Entrez un mot correct pour scoré:" + listeMots[1])
+// if( motUtilisateur === listeMots[1]) {
+//     score++
+// }
+// motUtilisateur = prompt("Entrez un mot correct pour scoré:" + listeMots[2])
+// if( motUtilisateur === listeMots[2]) {
+//     score++
+// }
+let listeMots = ["Cachalot", "Pétunia", "Serviette"]
 let score = 0
 
-let motUtilisateur = prompt("Entrez un mot correct pour scoré:" + listeMots[0])
-if( motUtilisateur === listeMots[0]) {
-    score++
-}
-
-motUtilisateur = prompt("Entrez un mot correct pour scoré:" + listeMots[1])
-if( motUtilisateur === listeMots[1]) {
-    score++
-}
-motUtilisateur = prompt("Entrez un mot correct pour scoré:" + listeMots[2])
-if( motUtilisateur === listeMots[2]) {
-    score++
+for(i = 0; i < listeMots.length; i++) {
+    let motUtilisateur = prompt("Entrez un mot correct pour scoré:" + listeMots[i])
+    if( motUtilisateur === listeMots[i]) {
+            score++
+        }
 }
 
 console.log(score)
