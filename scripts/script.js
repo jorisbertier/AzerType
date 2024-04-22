@@ -43,39 +43,52 @@ function lancerJeu() {
     let inputEcriture = document.getElementById('inputEcriture')
     let score = 0
     let i = 0
-    console.log(listeMots[i])
+    let listeProposition = listeMots
+    console.log(listeProposition[i])
 
-    afficherProposition(listeMots[i])
+    afficherProposition(listeProposition[i])
 
     btnValiderMot.addEventListener('click', () => {
         // console.log(inputEcriture.value)
         // console.log(listeMots[i])
-        if(listeMots[i] === inputEcriture.value) {
+        if(listeProposition[i] === inputEcriture.value) {
             console.log('mot trouve')
             score++
         }
 
         i++
         afficherResultat(score, i)
+        inputEcriture.value = ""
 
-        if(listeMots[i] === undefined) {
-            afficherProposition("Le jeu est finis")
+        if(listeProposition[i] === undefined) {
+            afficherProposition("Le jeu est fini")
             btnValiderMot.disabled = true;
         } else {
-            afficherProposition(listeMots[i])
+            afficherProposition(listeProposition[i])
         }
-        inputEcriture.value = ""
-        // console.log(i)
-
-
         
     })
 
-    // inputEcriture.addEventListener('click', () => {
-        
-    // })
+    let optionSource = document.querySelectorAll('input[name="optionSource"]')
+
+    for( index = 0; index < optionSource.length; index++) {
+        optionSource[index].addEventListener('change', (event) => {
+            console.log(event.target.value)
+            if(event.target.value === "1") {
+                listeProposition =listeMots
+            } else {
+                listeProposition = listePhrases
+            }
+            afficherProposition(listeProposition[i])
+        })
+    }
+
 
     afficherResultat(score, i)
 }
 
 
+
+
+
+// array1.forEach((element) => console.log(element));
