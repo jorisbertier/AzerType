@@ -28,11 +28,54 @@ function afficherResultat(score, nbMotsProposes) {
  * Cette fonction lance le jeu. 
  * Elle demande à l'utilisateur de choisir entre "mots" et "phrases" et lance la boucle de jeu correspondante
  */
+
+function afficherProposition(proposition) {
+    let zoneProposition  = document.querySelector('.zoneProposition')
+
+    zoneProposition.innerText = proposition
+
+}
+
+
 function lancerJeu() {
 
+    let btnValiderMot = document.getElementById('btnValiderMot')
+    let inputEcriture = document.getElementById('inputEcriture')
     let score = 0
-    let nbMotsProposes = 0
+    let i = 0
+    console.log(listeMots[i])
+
+    afficherProposition(listeMots[i])
+
+    btnValiderMot.addEventListener('click', () => {
+        // console.log(inputEcriture.value)
+        // console.log(listeMots[i])
+        if(listeMots[i] === inputEcriture.value) {
+            console.log('mot trouve')
+            score++
+        }
+
+        i++
+        afficherResultat(score, i)
+
+        if(listeMots[i] === undefined) {
+            afficherProposition("Le jeu est finis")
+            btnValiderMot.disabled = true;
+        } else {
+            afficherProposition(listeMots[i])
+        }
+        inputEcriture.value = ""
+        // console.log(i)
 
 
-    afficherResultat(score, nbMotsProposes)
+        
+    })
+
+    // inputEcriture.addEventListener('click', () => {
+        
+    // })
+
+    afficherResultat(score, i)
 }
+
+
