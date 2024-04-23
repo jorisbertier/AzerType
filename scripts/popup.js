@@ -2,7 +2,6 @@ function afficherPopup() {
     let popupBackground = document.querySelector(".popupBackground")
     // La popup est masquée par défaut (display:none), ajouter la classe "active"
     // va changer son display et la rendre visible. 
-    console.log('test')
     popupBackground.classList.add("active")
 }
 

@@ -41,6 +41,25 @@ function afficherEmail(nom, email, score) {
     location.href = mailto
 }
 
+function validerNom(nom) {
+    if(nom.length >= 2) {
+        
+        return nom.trim() !== '';
+    } else {
+        console.log('Nom non valide doit être de 2 acractère')
+    }
+}
+
+function validerEmail(email) {
+    let regexEmail = new RegExp('^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$');
+    if(regexEmail.test(email)) {
+        return email
+    } else {
+        console.log('Email non valide')
+    }     
+}
+
+
 function lancerJeu() {
 
     let btnValiderMot = document.getElementById('btnValiderMot')
@@ -48,7 +67,6 @@ function lancerJeu() {
     let score = 0
     let i = 0
     let listeProposition = listeMots
-    console.log(listeProposition[i])
 
     afficherProposition(listeProposition[i])
 
@@ -96,21 +114,13 @@ function lancerJeu() {
         event.preventDefault()
         let nom = document.getElementById('nom').value
         let email = document.getElementById('email').value
-        let regexEmail = new RegExp('^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$');
-    
-        if(regexEmail.test(email)) {
+
+        if(validerNom(nom) && validerEmail(email)) {
             let scoreEmail = `${score} / ${i}`
             afficherEmail(nom, email, scoreEmail);
-        } else {
-            console.log('Email non valide')
-        }       
-
+        }
         
     })
-}
-
-function validerNom() {
-
 }
 
 
