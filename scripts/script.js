@@ -118,6 +118,8 @@ function lancerJeu() {
         if(validerNom(nom) && validerEmail(email)) {
             let scoreEmail = `${score} / ${i}`
             afficherEmail(nom, email, scoreEmail);
+        } else {
+            console.log('error')
         }
         
     })
