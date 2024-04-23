@@ -36,6 +36,10 @@ function afficherProposition(proposition) {
 
 }
 
+function afficherEmail(nom, email, score) {
+    let mailto = `mailto:${email}?subject=Partage du score Azertype&body=Salut, je suis ${nom} et je viens de réaliser le score ${score} sur le site d'Azertype !`
+    location.href = mailto
+}
 
 function lancerJeu() {
 
@@ -85,6 +89,19 @@ function lancerJeu() {
 
 
     afficherResultat(score, i)
+
+    let formPopup = document.querySelector('.popup form')
+    
+    formPopup.addEventListener('submit', (event) => {
+        event.preventDefault()
+        let nom = document.getElementById('nom').value
+        let email = document.getElementById('email').value
+    
+        let scoreEmail = `${score} / ${i}`
+        // let message = ""
+        afficherEmail(nom, email, scoreEmail);
+        
+    })
 }
 
 
