@@ -59,6 +59,23 @@ function validerEmail(email) {
     }     
 }
 
+function gererFormulaire(score, i) {
+    let formPopup = document.querySelector('.popup form')
+    
+    formPopup.addEventListener('submit', (event) => {
+        event.preventDefault()
+        let nom = document.getElementById('nom').value
+        let email = document.getElementById('email').value
+
+        if(validerNom(nom) && validerEmail(email)) {
+            let scoreEmail = `${score} / ${i}`
+            afficherEmail(nom, email, scoreEmail);
+        } else {
+            console.log('error')
+        }
+        
+    })
+}
 
 function lancerJeu() {
 
@@ -105,24 +122,9 @@ function lancerJeu() {
         })
     }
 
+    gererFormulaire(score, i)
 
     afficherResultat(score, i)
-
-    let formPopup = document.querySelector('.popup form')
-    
-    formPopup.addEventListener('submit', (event) => {
-        event.preventDefault()
-        let nom = document.getElementById('nom').value
-        let email = document.getElementById('email').value
-
-        if(validerNom(nom) && validerEmail(email)) {
-            let scoreEmail = `${score} / ${i}`
-            afficherEmail(nom, email, scoreEmail);
-        } else {
-            console.log('error')
-        }
-        
-    })
 }
 
 // array1.forEach((element) => console.log(element));
