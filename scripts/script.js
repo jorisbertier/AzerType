@@ -96,12 +96,21 @@ function lancerJeu() {
         event.preventDefault()
         let nom = document.getElementById('nom').value
         let email = document.getElementById('email').value
+        let regexEmail = new RegExp('^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$');
     
-        let scoreEmail = `${score} / ${i}`
-        // let message = ""
-        afficherEmail(nom, email, scoreEmail);
+        if(regexEmail.test(email)) {
+            let scoreEmail = `${score} / ${i}`
+            afficherEmail(nom, email, scoreEmail);
+        } else {
+            console.log('Email non valide')
+        }       
+
         
     })
+}
+
+function validerNom() {
+
 }
 
 
